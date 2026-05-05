@@ -7,7 +7,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
  *
  * @author  Di Gasbarro Rocco (628758), Abballe Francesco (632026)
  * @see Stanza, Attrezzo
- * @version 1.0
+ * @version 1.3
  */
 
 public class Labirinto {
@@ -26,12 +26,12 @@ public class Labirinto {
 		/* crea gli attrezzi */
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
-    	
+    	/*Esempio*/Attrezzo chiave=new Attrezzo("chiave",1);
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
-		Stanza aulaN11 = new Stanza("Aula N11");
-		Stanza aulaN10 = new Stanza("Aula N10");
-		Stanza laboratorio = new Stanza("Laboratorio Campus");
+		/*Esempio*/StanzaMagica aulaN11 = new StanzaMagica("Aula N11");
+		/*Esempio*/StanzaBloccata aulaN10 = new StanzaBloccata("Aula N10","est","chiave");
+		/*Esempio*/StanzaBuia laboratorio = new StanzaBuia("Laboratorio Campus","lanterna");
 		Stanza biblioteca = new Stanza("Biblioteca");
 		
 		/* collega le stanze */
@@ -50,6 +50,7 @@ public class Labirinto {
 
         /* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
+		aulaN10.addAttrezzo(chiave);
 		atrio.addAttrezzo(osso);
 
 		// il gioco comincia nell'atrio

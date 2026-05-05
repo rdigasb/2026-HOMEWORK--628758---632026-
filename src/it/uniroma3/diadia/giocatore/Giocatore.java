@@ -2,6 +2,7 @@ package it.uniroma3.diadia.giocatore;
 
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.IO;
 
 /* questa classe gestisce il giocatore.
  * Giocatore gestisce i cfu, le azioni per prendere 
@@ -26,7 +27,7 @@ public class Giocatore {
 	}
 	
 	
-	public void prendi(String nomeAttrezzo, Stanza stanzaCorrente) {
+	public void prendi(String nomeAttrezzo, Stanza stanzaCorrente,IO io) {
         
         Attrezzo a = stanzaCorrente.getAttrezzo(nomeAttrezzo);
 
@@ -35,23 +36,23 @@ public class Giocatore {
             if (this.borsa.addAttrezzo(a)) {
                
                 stanzaCorrente.removeAttrezzo(a);
-                System.out.println("Hai preso: " + nomeAttrezzo);
+                io.mostraMessaggio("Hai preso: " + nomeAttrezzo);
             } else {
-                System.out.println("Borsa troppo piena! Non puoi prendere " + nomeAttrezzo);
+                io.mostraMessaggio("Borsa troppo piena! Non puoi prendere " + nomeAttrezzo);
             }
         } else {
-            System.out.println("L'attrezzo " + nomeAttrezzo + " non � in questa stanza.");
+            io.mostraMessaggio("L'attrezzo " + nomeAttrezzo + " non è in questa stanza.");
         }
     }
 	
 	
-	public void posa(String nomeAttrezzo, Stanza stanzaCorrente) {
+	public void posa(String nomeAttrezzo, Stanza stanzaCorrente,IO io) {
         if (this.borsa.hasAttrezzo(nomeAttrezzo)) {
             Attrezzo a = this.borsa.removeAttrezzo(nomeAttrezzo);
             stanzaCorrente.addAttrezzo(a);
-            System.out.println("Hai posato: " + nomeAttrezzo);
+            io.mostraMessaggio("Hai posato: " + nomeAttrezzo);
         } else {
-            System.out.println("Non hai " + nomeAttrezzo + " in borsa.");
+            io.mostraMessaggio("Non hai " + nomeAttrezzo + " in borsa.");
         }
     }
 	
