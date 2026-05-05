@@ -17,19 +17,19 @@ import static org.junit.jupiter.api.Assertions.*;  //istruzioni per importare JU
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.ambienti.StanzaProtected;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class testStanza {
 
-	private Stanza stanza;
+	private StanzaProtected stanza;
 	private Attrezzo lancia;
 	private Attrezzo chiave;
 	
 	//metodo da eseguire prima di ogni test
 	@BeforeEach
 	public void setUp() {
-		stanza = new Stanza("aulaN0");
+		stanza = new StanzaProtected("aulaN0");
 		lancia = new Attrezzo("lancia", 4);
 		chiave = new Attrezzo("chiave", 1);
 	}
@@ -66,7 +66,7 @@ public class testStanza {
 	//combinare i test dei due metodi in questo caso conveniva in ottica di ottimizzazione del codice
 	@Test
     public void test_ImpostaeGet_StanzaAdiacente() {
-        Stanza nuova = new Stanza("M1");
+        StanzaProtected nuova = new StanzaProtected("M1");
         stanza.impostaStanzaAdiacente("M1", nuova);
 
         assertEquals(nuova, stanza.getStanzaAdiacente("M1"));
@@ -79,8 +79,8 @@ public class testStanza {
 
     @Test
     public void test_AggiornaStanzaAdiacente() {
-        Stanza nord1 = new Stanza("Nord1");
-        Stanza nord2 = new Stanza("Nord2");
+        StanzaProtected nord1 = new StanzaProtected("Nord1");
+        StanzaProtected nord2 = new StanzaProtected("Nord2");
 
         stanza.impostaStanzaAdiacente("nord", nord1);
         stanza.impostaStanzaAdiacente("nord", nord2);
